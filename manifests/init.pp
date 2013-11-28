@@ -10,9 +10,13 @@ define rubyinstall($version = $title) {
     }
   }
 
+  if ! defined(Package["libssl-dev"]) {
+    package { "libssl-dev":
+        ensure => present,
+    }
+  }
+
   package {
-    "libssl-dev":
-      ensure => present;
     "libreadline6":
       ensure => present;
     "libreadline6-dev":
